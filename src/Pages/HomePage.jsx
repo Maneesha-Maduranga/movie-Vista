@@ -1,6 +1,6 @@
-import NewsCard from '../Components/NewsCard';
+import NewsCard from '../Components/MovieCard';
 import HighlightCard from '../Components/HighlightCard';
-import NewsCarrosal from '../Components/NewsCarrosal';
+import MovieCarresol from '../Components/MovieCarresol';
 import { Container, Box, Grid } from '@mui/material';
 import { useEffect, useState } from 'react';
 
@@ -22,27 +22,31 @@ function HomePage() {
   }, []);
 
   return (
-    <Container>
+    <>
       {/* Section One */}
-
-      {/* Section Two */}
-      <Grid
-        container
-        spacing={{ xs: 2, sm: 3, md: 3 }}
-        columns={{ xs: 1, sm: 8, md: 12 }}
-      >
-        {news.map((item, index) => (
-          <Grid item xs={1} sm={4} md={4} key={index}>
-            <NewsCard
-              imgPath={item.urlToImage}
-              title={item.title}
-              author={item.author}
-              date={item.publishedAt}
-            />
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
+      <Box my={10}>
+        <MovieCarresol />
+      </Box>
+      <Container>
+        {/* Section Two */}
+        <Grid
+          container
+          spacing={{ xs: 2, sm: 3, md: 3 }}
+          columns={{ xs: 1, sm: 8, md: 12 }}
+        >
+          {news.map((item, index) => (
+            <Grid item xs={1} sm={4} md={4} key={index}>
+              <NewsCard
+                imgPath={item.urlToImage}
+                title={item.title}
+                author={item.author}
+                date={item.publishedAt}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+    </>
   );
 }
 

@@ -4,44 +4,44 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 
-import { FreeMode, Pagination } from 'swiper';
+import { FreeMode, Pagination, Navigation } from 'swiper';
 import HighlightCard from './HighlightCard';
 
 function NewsCarrosal() {
   return (
     <Swiper
-      slidesPerView={3}
-      spaceBetween={30}
+      slidesPerView={6}
       freeMode={true}
       pagination={{
         clickable: true,
       }}
-      modules={[FreeMode, Pagination]}
+      navigation={true}
+      modules={[FreeMode]}
       className='mySwiper'
     >
       <SwiperSlide>
-        <HighlightCard width='500px' />
+        <HighlightCard />
       </SwiperSlide>
       <SwiperSlide>
-        <HighlightCard width='500px' />
+        <HighlightCard />
       </SwiperSlide>
       <SwiperSlide>
-        <HighlightCard width='500px' />
+        <HighlightCard />
       </SwiperSlide>
       <SwiperSlide>
-        <HighlightCard width='500px' />
+        <HighlightCard />
       </SwiperSlide>
       <SwiperSlide>
-        <HighlightCard width='500px' />
+        <HighlightCard />
       </SwiperSlide>
       <SwiperSlide>
-        <HighlightCard width='500px' />
+        <HighlightCard />
       </SwiperSlide>
       <SwiperSlide>
-        <HighlightCard width='500px' />
+        <HighlightCard />
       </SwiperSlide>
       <SwiperSlide>
-        <HighlightCard width='500px' />
+        <HighlightCard />
       </SwiperSlide>
     </Swiper>
   );

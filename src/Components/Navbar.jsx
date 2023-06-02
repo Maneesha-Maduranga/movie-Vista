@@ -37,7 +37,7 @@ function Navbar() {
         m={1}
       >
         <Box>
-          <Typography variant='h4'>
+          <Typography variant='h5'>
             MOVIE
             <Typography
               sx={{ display: 'inline', mx: '5px', fontSize: 'h6.fontSize' }}
