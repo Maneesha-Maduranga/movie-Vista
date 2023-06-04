@@ -1,25 +1,15 @@
-import NewsCard from '../Components/MovieCard';
-import HighlightCard from '../Components/HighlightCard';
+import MovieCard from '../Components/MovieCard';
+
 import MovieCarresol from '../Components/MovieCarresol';
 import { Container, Box, Grid } from '@mui/material';
-import { useEffect, useState } from 'react';
 
-import { apiService } from '../Services/api';
+import Spinner from '../Components/Spinner';
+import useFetchData from '../Hooks/useFecthData';
 
 function HomePage() {
-  const [news, setNews] = useState([]);
-  const [error, setError] = useState('');
+  const localMv = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-  const fetchNews = async () => {
-    const { data } = await apiService.get();
-    const { articles } = data;
-    console.log(articles);
-    setNews(articles);
-  };
-
-  useEffect(() => {
-    fetchNews();
-  }, []);
+  const [movies, loading] = useFetchData('now_playing');
 
   return (
     <>
@@ -34,16 +24,30 @@ function HomePage() {
           spacing={{ xs: 2, sm: 3, md: 3 }}
           columns={{ xs: 1, sm: 8, md: 12 }}
         >
-          {news.map((item, index) => (
-            <Grid item xs={1} sm={4} md={4} key={index}>
-              <NewsCard
-                imgPath={item.urlToImage}
-                title={item.title}
-                author={item.author}
-                date={item.publishedAt}
-              />
-            </Grid>
-          ))}
+          {loading ? (
+            <>
+              {localMv.map((item, index) => (
+                <Grid item xs={1} sm={4} md={4} key={index}>
+                  <Spinner />
+                </Grid>
+              ))}
+            </>
+          ) : (
+            <>
+              {movies.map((item, index) => (
+                <Grid item xs={1} sm={4} md={4} key={index}>
+                  <MovieCard
+                    imgPath={item.urlToImage}
+                    title={item.title}
+                    description={item.overview}
+                    date={item.release_date}
+                    vote={item.vote_average}
+                    img={item.poster_path}
+                  />
+                </Grid>
+              ))}
+            </>
+          )}
         </Grid>
       </Container>
     </>

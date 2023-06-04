@@ -1,7 +1,7 @@
 import { Card, Typography, CardMedia, Rating } from '@mui/material';
 import { Box } from '@mui/system';
 
-function HighlightCard({ width }) {
+function HighlightCard({ img, rating, title, date }) {
   return (
     <Card
       sx={{

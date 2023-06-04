@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const apiService = axios.create({
-  baseURL: 'https://newsapi.org/v2/top-headlines?sources=bbc-news',
+  baseURL: 'https://api.themoviedb.org/3/movie/',
   headers: {
     Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
   },
