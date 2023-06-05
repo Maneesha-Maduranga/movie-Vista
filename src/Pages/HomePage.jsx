@@ -8,6 +8,10 @@ import useFetchData from '../Hooks/useFecthData';
 import Footer from '../Components/Footer';
 import { useState } from 'react';
 
+import { Link } from 'react-router-dom';
+
+import popCorn from '../assets/popcorn.png';
+
 function HomePage() {
   const localMv = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -25,16 +29,34 @@ function HomePage() {
     <>
       {/* Section One */}
       <Box my={10} mx={5}>
-        <Typography variant='h5' gutterBottom>
+        <Box
+          sx={{
+            fontFamily: 'Poppins',
+            fontWeight: 'bold',
+            fontSize: '1.5rem',
+          }}
+        >
           UpComing Movies
-        </Typography>
+        </Box>
         <MovieCarresol />
       </Box>
       <Container>
         {/* Section Two */}
-        <Typography variant='h5' gutterBottom>
-          Now Playing Movies
-        </Typography>
+        <Box sx={{ display: 'flex', alignItems: 'center', my: 3 }}>
+          <Box
+            sx={{
+              fontFamily: 'Poppins',
+              fontWeight: 'bold',
+              fontSize: '1.5rem',
+            }}
+          >
+            Movies in Theatres
+          </Box>
+
+          <Box sx={{ alignSelf: 'center' }}>
+            <img src={popCorn} style={{ height: '40px', width: '40px' }} />
+          </Box>
+        </Box>
         <Grid
           container
           spacing={{ xs: 2, sm: 3, md: 3 }}
@@ -44,7 +66,7 @@ function HomePage() {
             <>
               {localMv.map((item, index) => (
                 <Grid item xs={1} sm={4} md={4} key={index}>
-                  <Spinner width={350} height={300} />
+                  <Spinner width={300} height={300} />
                 </Grid>
               ))}
             </>
@@ -52,14 +74,16 @@ function HomePage() {
             <>
               {movies.map((item, index) => (
                 <Grid item xs={1} sm={4} md={4} key={index}>
-                  <MovieCard
-                    imgPath={item.urlToImage}
-                    title={item.title}
-                    description={item.overview}
-                    date={item.release_date}
-                    vote={item.vote_average}
-                    img={item.poster_path}
-                  />
+                  <Link to={`${item.id}`}>
+                    <MovieCard
+                      imgPath={item.urlToImage}
+                      title={item.title}
+                      voteCount={item.vote_count}
+                      date={item.release_date}
+                      vote={item.vote_average}
+                      img={item.poster_path}
+                    />
+                  </Link>
                 </Grid>
               ))}
             </>

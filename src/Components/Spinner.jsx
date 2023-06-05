@@ -7,23 +7,28 @@ function Spinner({ width, height }) {
         display: 'flex',
         width: width,
         height: height,
-        flexDirection: 'row',
+        flexDirection: 'column',
       }}
     >
       <Skeleton
         variant='rounded'
-        sx={{ width: 150, height: 300, alignSelf: 'center' }}
+        sx={{ width: 300, height: 350, alignSelf: 'flex-start' }}
       />
       <CardContent sx={{ m: 1 }}>
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-          }}
-        >
-          <Skeleton variant='text' sx={{ fontSize: '3rem', width: 150 }} />
-          <Skeleton variant='text' sx={{ fontSize: '1rem', width: 150 }} />
-          <Skeleton variant='rounded' width={150} height={90} />
+        <Box>
+          <Box>
+            <Skeleton variant='text' sx={{ fontSize: '1rem', width: 150 }} />
+          </Box>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+            }}
+          >
+            <Skeleton variant='text' sx={{ fontSize: '1rem', width: 150 }} />
+            <Skeleton variant='text' sx={{ fontSize: '1rem', width: 150 }} />
+          </Box>
         </Box>
       </CardContent>
     </Card>

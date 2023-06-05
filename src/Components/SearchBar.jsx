@@ -3,6 +3,7 @@ import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 
 import { BsSearch } from 'react-icons/bs';
+import { useState } from 'react';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -46,15 +47,22 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-function SearchBar() {
+function SearchBar({ getText }) {
+  const [search, setSearch] = useState('');
+
   return (
     <Search>
       <SearchIconWrapper>
         <BsSearch />
       </SearchIconWrapper>
       <StyledInputBase
+        value={search}
         placeholder='Search for movie'
         inputProps={{ 'aria-label': 'search' }}
+        onChange={(e) => {
+          setSearch(e.target.value);
+          getText(e.target.value);
+        }}
       />
     </Search>
   );

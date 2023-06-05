@@ -8,6 +8,10 @@ import Footer from '../Components/Footer';
 import SerachBar from '../Components/SearchBar';
 
 function MainLayout() {
+  const getText = (txt) => {
+    console.log(txt);
+  };
+
   return (
     <>
       <Box
@@ -27,7 +31,11 @@ function MainLayout() {
           }}
         >
           <Box sx={{ gridArea: 'header', margin: '10px' }}>
-            <Navbar />
+            <Navbar
+              getSearch={(txt) => {
+                getText(txt);
+              }}
+            />
           </Box>
 
           <Box sx={{ gridArea: 'main' }}>

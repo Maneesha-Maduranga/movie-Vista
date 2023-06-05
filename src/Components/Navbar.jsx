@@ -1,31 +1,15 @@
-import { useState } from 'react';
+import { BiMoon } from 'react-icons/bi';
 
-//Catergory Data
-import { newsCatergory } from '../Utills/Catergory';
-
-import { BiMoon, BiMenu, BiNews } from 'react-icons/bi';
-
-import {
-  Drawer,
-  AppBar,
-  Box,
-  Typography,
-  Button,
-  List,
-  ListItemIcon,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  Stack,
-  IconButton,
-} from '@mui/material';
+import { AppBar, Box, Typography, Stack, IconButton } from '@mui/material';
 import SearchBar from './SearchBar';
 
-function Navbar() {
-  const [drawer, setDrawer] = useState(false);
+import logo from '../assets/logo.png';
 
-  const toggleDrawer = () => {
-    setDrawer(!drawer);
+import { Link } from 'react-router-dom';
+
+function Navbar({ getSearch }) {
+  const getText = (text) => {
+    getSearch(text);
   };
 
   return (
@@ -36,15 +20,20 @@ function Navbar() {
         alignItems='center'
         m={1}
       >
-        <Box>
-          <Typography variant='h5'>
-            MOVIE
-            <Typography
-              sx={{ display: 'inline', mx: '5px', fontSize: 'h6.fontSize' }}
-            >
-              VISTA
-            </Typography>
-          </Typography>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Box sx={{ alignSelf: 'center' }}>
+            <img src={logo} style={{ height: '40px', width: '40px' }} />
+          </Box>
+          <Box
+            variant='h5'
+            sx={{
+              fontFamily: 'Poppins',
+              fontWeight: 'bold',
+              fontSize: '1.2rem',
+            }}
+          >
+            MOVIEVISTA
+          </Box>
         </Box>
 
         {/* <Box
@@ -66,7 +55,11 @@ function Navbar() {
           }}
         >
           <Box sx={{ mx: 2 }}>
-            <SearchBar />
+            <SearchBar
+              getText={(text) => {
+                getText(text);
+              }}
+            />
           </Box>
 
           {/* <IconButton
