@@ -1,12 +1,12 @@
 import { Card, Skeleton, CardContent, Box } from '@mui/material';
 
-function Spinner() {
+function Spinner({ width, height }) {
   return (
     <Card
       sx={{
         display: 'flex',
-        width: 350,
-        height: 300,
+        width: width,
+        height: height,
         flexDirection: 'row',
       }}
     >

@@ -23,8 +23,7 @@ function MainLayout() {
             gridTemplateRows: 'auto',
             gridTemplateAreas: `"header header"
   
-  "main main"
-  "footer footer"`,
+  "main main"`,
           }}
         >
           <Box sx={{ gridArea: 'header', margin: '10px' }}>
@@ -33,10 +32,6 @@ function MainLayout() {
 
           <Box sx={{ gridArea: 'main' }}>
             <Outlet />
-          </Box>
-
-          <Box sx={{ gridArea: 'footer' }}>
-            <Footer />
           </Box>
         </Box>
       </Box>

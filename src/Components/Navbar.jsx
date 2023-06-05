@@ -47,7 +47,7 @@ function Navbar() {
           </Typography>
         </Box>
 
-        <Box
+        {/* <Box
           sx={{ display: { xs: 'none', sm: 'none', md: 'none', lg: 'block' } }}
         >
           {newsCatergory.map((item) => (
@@ -55,7 +55,7 @@ function Navbar() {
               {item}
             </Button>
           ))}
-        </Box>
+        </Box> */}
 
         <Box
           sx={{
@@ -69,7 +69,7 @@ function Navbar() {
             <SearchBar />
           </Box>
 
-          <IconButton
+          {/* <IconButton
             size='large'
             edge='start'
             color='inherit'
@@ -80,7 +80,7 @@ function Navbar() {
             onClick={toggleDrawer}
           >
             <BiMenu />
-          </IconButton>
+          </IconButton> */}
 
           <IconButton
             size='large'
@@ -94,7 +94,7 @@ function Navbar() {
       </Stack>
 
       {/* Drawer Area */}
-      <Drawer anchor='right' open={drawer} onClose={toggleDrawer}>
+      {/* <Drawer anchor='right' open={drawer} onClose={toggleDrawer}>
         <List>
           {newsCatergory.map((item) => (
             <ListItem disablePadding key={item}>
@@ -107,7 +107,7 @@ function Navbar() {
             </ListItem>
           ))}
         </List>
-      </Drawer>
+      </Drawer> */}
     </AppBar>
   );
 }

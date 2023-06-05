@@ -47,7 +47,13 @@ function MovieCard({ img, title, description, date, vote }) {
             <Divider orientation='vertical' flexItem />
           </Typography>
 
-          <Rating name='size-small' defaultValue={vote} size='small' max={8} />
+          <Rating
+            name='size-small'
+            defaultValue={vote}
+            size='small'
+            max={8}
+            readOnly
+          />
           <Box component='div' sx={{ overflow: 'auto' }}>
             {description}
           </Box>

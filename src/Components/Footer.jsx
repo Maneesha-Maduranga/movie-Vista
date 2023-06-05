@@ -1,7 +1,11 @@
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 
-function Footer() {
+function Footer({ pages, setPagination }) {
+  const handleChange = (e, v) => {
+    setPagination(v);
+  };
+
   return (
     <Stack
       direction='row'
@@ -10,7 +14,7 @@ function Footer() {
       spacing={2}
       mt={4}
     >
-      <Pagination count={5} variant='outlined' />
+      <Pagination count={pages} variant='outlined' onChange={handleChange} />
     </Stack>
   );
 }
