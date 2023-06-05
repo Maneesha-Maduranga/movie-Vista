@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { apiService } from '../Services/api';
 
 function useFetchDetails(url) {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState({});
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
 
