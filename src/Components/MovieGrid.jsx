@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
-import { Container, Box, Grid, Typography } from '@mui/material';
-import useFetchData from '../Hooks/useFecthData';
+
+import { Grid } from '@mui/material';
+
+//Components
 import Spinner from '../Components/Spinner';
 import MovieCard from '../Components/MovieCard';
-import Footer from '../Components/Footer';
 
 function MovieGrid({ loading, movies }) {
   const localMv = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];

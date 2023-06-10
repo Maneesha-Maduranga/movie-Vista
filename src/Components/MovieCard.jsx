@@ -1,10 +1,8 @@
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import { Box, Stack, Rating, Tooltip } from '@mui/material';
+
+import { Box, Tooltip } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import Badge from '@mui/material/Badge';
 

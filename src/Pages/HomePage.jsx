@@ -2,19 +2,20 @@ import { useState } from 'react';
 
 import { Container, Box } from '@mui/material';
 
+//Components
 import MovieGrid from '../Components/MovieGrid';
 import MovieCarresol from '../Components/MovieCarresol';
-
-import useFetchData from '../Hooks/useFecthData';
 import Footer from '../Components/Footer';
 import Heading from '../Components/Heading';
 import RadioSelection from '../Components/RadioSelection';
+
+//Custom Hooks
+import useFetchData from '../Hooks/useFecthData';
 
 function HomePage() {
   const [url, setUrl] = useState('movie/now_playing');
   const [page, setPage] = useState(1);
   const [title, setTitle] = useState('');
-  // trending/movie/{time_window}
 
   const handleSelect = (q) => {
     if (q == 'trending') {

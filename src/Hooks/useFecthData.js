@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+
 import { apiService } from '../Services/api';
 
 function useFetchData(url, page) {
@@ -6,8 +7,6 @@ function useFetchData(url, page) {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
   const [pages, setPages] = useState(1);
-
-  console.log(url);
 
   async function fetchMovie() {
     try {
@@ -25,7 +24,6 @@ function useFetchData(url, page) {
     } catch (error) {
       setLoading(false);
       throw new Response('Not Found', { status: 404 });
-      setError(error);
     }
   }
 

@@ -9,6 +9,7 @@ function RadioSelection({ handleSelect }) {
     <FormControl>
       <FormLabel id='demo-row-radio-buttons-group-label'>Sort By</FormLabel>
       <RadioGroup
+        defaultValue='now_playing'
         row
         aria-labelledby='demo-row-radio-buttons-group-label'
         name='row-radio-buttons-group'

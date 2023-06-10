@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 
 import { Box, Paper, Grid } from '@mui/material';
 
+//Components
 import Navbar from '../Components/Navbar';
 
 function MainLayout() {

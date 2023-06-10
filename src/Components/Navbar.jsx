@@ -1,5 +1,3 @@
-import { BiMoon } from 'react-icons/bi';
-
 import { AppBar, Box, Stack, IconButton } from '@mui/material';
 
 import logo from '../assets/logo.png';

@@ -8,10 +8,10 @@ import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 
-import { FreeMode, Pagination, Navigation, Autoplay } from 'swiper';
+import { FreeMode, Navigation } from 'swiper';
 import HighlightCard from './HighlightCard';
-import { Container } from '@mui/system';
-import { Box, Typography } from '@mui/material';
+
+import { Box } from '@mui/material';
 import useFetchData from '../Hooks/useFecthData';
 
 import Spinner from './Spinner';
