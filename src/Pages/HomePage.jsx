@@ -1,29 +1,36 @@
-import MovieCard from '../Components/MovieCard';
-
-import MovieCarresol from '../Components/MovieCarresol';
-import { Container, Box, Grid, Typography } from '@mui/material';
-
-import Spinner from '../Components/Spinner';
-import useFetchData from '../Hooks/useFecthData';
-import Footer from '../Components/Footer';
 import { useState } from 'react';
 
-import { Link } from 'react-router-dom';
+import { Container, Box } from '@mui/material';
 
-import popCorn from '../assets/popcorn.png';
+import MovieGrid from '../Components/MovieGrid';
+import MovieCarresol from '../Components/MovieCarresol';
+
+import useFetchData from '../Hooks/useFecthData';
+import Footer from '../Components/Footer';
+import Heading from '../Components/Heading';
+import RadioSelection from '../Components/RadioSelection';
 
 function HomePage() {
-  const localMv = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
+  const [url, setUrl] = useState('movie/now_playing');
   const [page, setPage] = useState(1);
+  const [title, setTitle] = useState('');
+  // trending/movie/{time_window}
+
+  const handleSelect = (q) => {
+    if (q == 'trending') {
+      setUrl(`trending/movie/day`);
+      setTitle(q);
+    } else {
+      setUrl(`movie/${q}`);
+      setTitle(q);
+    }
+  };
 
   const setPagination = (pageNo) => {
     setPage(pageNo);
   };
 
-  const [movies, loading, error, pages] = useFetchData('now_playing', page);
-  // const arr = useFetchData('now_playing');
-  // console.log(arr);
+  const [movies, loading, error, pages] = useFetchData(url, page);
 
   return (
     <>
@@ -40,57 +47,30 @@ function HomePage() {
         </Box>
         <MovieCarresol />
       </Box>
+      {/* Section Two */}
       <Container>
-        {/* Section Two */}
-        <Box sx={{ display: 'flex', alignItems: 'center', my: 3 }}>
-          <Box
-            sx={{
-              fontFamily: 'Poppins',
-              fontWeight: 'bold',
-              fontSize: '1.5rem',
-            }}
-          >
-            Movies in Theatres
-          </Box>
-
-          <Box sx={{ alignSelf: 'center' }}>
-            <img src={popCorn} style={{ height: '40px', width: '40px' }} />
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-evenly',
+          }}
+        >
+          <Box sx={{ mx: 0.5 }}>
+            <RadioSelection
+              handleSelect={(q) => {
+                handleSelect(q);
+              }}
+            />
           </Box>
         </Box>
-        <Grid
-          container
-          spacing={{ xs: 2, sm: 3, md: 3 }}
-          columns={{ xs: 1, sm: 8, md: 12 }}
-        >
-          {loading ? (
-            <>
-              {localMv.map((item, index) => (
-                <Grid item xs={1} sm={4} md={4} key={index}>
-                  <Spinner width={300} height={300} />
-                </Grid>
-              ))}
-            </>
-          ) : (
-            <>
-              {movies.map((item, index) => (
-                <Grid item xs={1} sm={4} md={4} key={index}>
-                  <Link to={`${item.id}`}>
-                    <MovieCard
-                      imgPath={item.urlToImage}
-                      title={item.title}
-                      voteCount={item.vote_count}
-                      date={item.release_date}
-                      vote={item.vote_average}
-                      img={item.poster_path}
-                    />
-                  </Link>
-                </Grid>
-              ))}
-            </>
-          )}
-        </Grid>
       </Container>
-      <Footer pages={pages} setPagination={(w) => setPagination(w)} />
+      {/* Section Three */}
+      <Container>
+        <Heading title={title} />
+        <MovieGrid loading={loading} movies={movies} />
+        <Footer pages={pages} setPagination={(w) => setPagination(w)} />
+      </Container>
     </>
   );
 }

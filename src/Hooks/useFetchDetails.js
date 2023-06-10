@@ -14,6 +14,8 @@ function useFetchDetails(url) {
       setLoading(false);
     } catch (error) {
       setError(error);
+      setLoading(false);
+      throw new Response('Not Found', { status: 404 });
     }
   }
 

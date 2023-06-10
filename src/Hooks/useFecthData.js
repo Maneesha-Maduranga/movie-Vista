@@ -7,7 +7,7 @@ function useFetchData(url, page) {
   const [loading, setLoading] = useState(true);
   const [pages, setPages] = useState(1);
 
-  // console.log(page, url);
+  console.log(url);
 
   async function fetchMovie() {
     try {
@@ -23,13 +23,15 @@ function useFetchData(url, page) {
       setLoading(false);
       setPages(total_pages);
     } catch (error) {
+      setLoading(false);
+      throw new Response('Not Found', { status: 404 });
       setError(error);
     }
   }
 
   useEffect(() => {
     fetchMovie();
-  }, [page]);
+  }, [url, page]);
 
   return [movies, loading, error, pages];
 }

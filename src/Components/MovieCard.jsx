@@ -8,16 +8,19 @@ import { Box, Stack, Rating, Tooltip } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import Badge from '@mui/material/Badge';
 
-import { BsHeart } from 'react-icons/bs';
+import { BsHeart, BsStar } from 'react-icons/bs';
 
-function MovieCard({ img, title, voteCount, date, vote }) {
+function MovieCard({ img, title, voteCount, date, vote, popularity }) {
   return (
     <Card
       sx={{
         display: 'flex',
-        width: 300,
-
+        width: 290,
+        transition: 'transform 0.9s ease-in-out',
         flexDirection: 'column',
+        ':hover': {
+          transform: 'scale(1.1)',
+        },
       }}
     >
       <CardMedia
@@ -90,10 +93,26 @@ function MovieCard({ img, title, voteCount, date, vote }) {
           </Box>
         </Box>
         <Divider />
-        <Box sx={{ mt: 2 }}>
+        <Box
+          sx={{
+            display: 'flex',
+            mt: 2,
+            flexDirection: 'row',
+            gap: 4,
+          }}
+        >
           <Tooltip title='Vote Count'>
-            <Badge badgeContent={voteCount} color='primary'>
+            <Badge badgeContent={voteCount} color='primary' max={5000}>
               <BsHeart color='action' size={22} />
+            </Badge>
+          </Tooltip>
+          <Tooltip title='Popularity'>
+            <Badge
+              badgeContent={popularity.toFixed()}
+              color='primary'
+              max={5000}
+            >
+              <BsStar color='action' size={22} />
             </Badge>
           </Tooltip>
         </Box>

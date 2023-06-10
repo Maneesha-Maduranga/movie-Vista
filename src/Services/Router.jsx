@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import MainLayout from '../Layout/MainLayout';
 import HomePage from '../Pages/HomePage';
-import NewsDetail from '../Pages/NewsDetail';
+import MovieDetail from '../Pages/MovieDetail';
 
 const Router = createBrowserRouter([
   {
@@ -13,9 +13,10 @@ const Router = createBrowserRouter([
         index: true,
         element: <HomePage />,
       },
+
       {
         path: ':id',
-        element: <NewsDetail />,
+        element: <MovieDetail />,
       },
     ],
   },

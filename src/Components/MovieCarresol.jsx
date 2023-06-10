@@ -1,19 +1,23 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import { Link } from 'react-router-dom';
+
 import 'swiper/css';
+import 'swiper/css/effect-fade';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
 
-import { FreeMode, Pagination, Navigation } from 'swiper';
+import { FreeMode, Pagination, Navigation, Autoplay } from 'swiper';
 import HighlightCard from './HighlightCard';
 import { Container } from '@mui/system';
 import { Box, Typography } from '@mui/material';
 import useFetchData from '../Hooks/useFecthData';
-import { toUnitless } from '@mui/material/styles/cssUtils';
+
 import Spinner from './Spinner';
 
 function NewsCarrosal() {
-  const [movies, loading] = useFetchData('upcoming', 1);
+  const [movies, loading] = useFetchData('movie/upcoming', 1);
 
   const localMv = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -43,7 +47,7 @@ function NewsCarrosal() {
         pagination={{
           clickable: true,
         }}
-        navigation={true}
+        navigation
         modules={[FreeMode, Navigation]}
         className='mySwiper'
       >
@@ -65,12 +69,14 @@ function NewsCarrosal() {
               return (
                 <SwiperSlide key={index}>
                   <Box sx={{ m: 1 }}>
-                    <HighlightCard
-                      title={item.title}
-                      date={item.release_date}
-                      vote={item.vote_average}
-                      img={item.poster_path}
-                    />
+                    <Link to={`${item.id}`}>
+                      <HighlightCard
+                        title={item.title}
+                        date={item.release_date}
+                        vote={item.vote_average}
+                        img={item.poster_path}
+                      />
+                    </Link>
                   </Box>
                 </SwiperSlide>
               );
