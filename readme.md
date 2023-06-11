@@ -11,6 +11,7 @@
 - In theaters: Users can check out movies that are currently playing in theaters.
 - Sorting options: Users can sort movies by popularity or top ratings.
   Installation
+- Pagination
 
 ### Install the dependencies: npm install
 
