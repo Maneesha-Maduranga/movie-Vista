@@ -8,6 +8,8 @@ import Badge from '@mui/material/Badge';
 
 import { BsHeart, BsStar } from 'react-icons/bs';
 
+import noPhoto from '../assets/noImage.png';
+
 function MovieCard({ img, title, voteCount, date, vote, popularity }) {
   return (
     <Card
@@ -24,7 +26,7 @@ function MovieCard({ img, title, voteCount, date, vote, popularity }) {
       <CardMedia
         component='img'
         sx={{ width: 300, height: 350, alignSelf: 'flex-start' }}
-        image={`https://image.tmdb.org/t/p/w1280/${img}`}
+        image={img ? `https://image.tmdb.org/t/p/w1280/${img}` : noPhoto}
         alt='Live from space album cover'
       />
       <CardContent>
